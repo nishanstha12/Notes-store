@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+
+    <style>
+        .app-heading{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0;
+        }
+.container{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container input, textarea
+{
+    width: 50rem;
+    margin-top: 20px;
+    outline: none;
+}
+        #notes{
+height: 500px;
+width: 100%;
+margin-top: 20px;
+background-color: aqua;
+        }
+#note{
+    background-color: blueviolet;
+    padding: 10px;
+    border-radius: 10px;
+ color: white;
+ margin-bottom: 10px;
+ position: relative;
+}
+
+a{
+    position : absolute ;
+    top: 0;
+    right: 5px;
+    background-color: red;
+    padding: 5px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    cursor: pointer;
+}
+#title{
+    height: 50px;
+    font-size: 20px;
+ 
+
+}
+#create{
+    background-color: rgb(7, 44, 255);
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius:30px ;
+    font-size: 35px;
+    color: aliceblue;
+    cursor: pointer;
+ display: flex;
+ align-items: center;
+ margin-top: 20px;
+ padding-left: 15px;
+}
+    </style>
+</head>
+<body>
+    <div class="app-heading">
+        <h1>Keep Your Notes Secured</h1>
+    </div>
+    <div class="container">
+<input type="text" placeholder="Note Title" id="title" >
+<textarea name="" id="description"  placeholder="Note Description" cols="30" rows="10"></textarea>
+<button id="create"><P>+</P></button>
+</div>
+<div id="notes">
+</div>
+<script>
+let title = document.getElementById("title");
+let description = document.getElementById("description");
+let btn = document.getElementById("create");
+let notes = document.getElementById("notes");
+btn.addEventListener("click", createHtmlElement );
+function createHtmlElement(){
+if(title.value==""  ){
+alert("fill note title ");
+}
+else if (description.value==""){  
+alert("fill note description ");
+}
+else{
+    var heading = document.createElement("h2");
+var desc = document.createElement("p");
+var note = document.createElement("div");
+note.id ="note";
+var del = document.createElement("a");
+del.innerText = "X";
+notes.appendChild(note);
+heading.innerText = title.value;
+desc.innerText = description.value;
+note.appendChild(heading);
+note.appendChild(desc);
+note.appendChild(del);
+del.addEventListener("click",function (){
+  notes.removeChild(note);
+}); 
+}
+}
+</script>
+</body>
+</html>
